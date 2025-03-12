@@ -1,0 +1,16 @@
+{
+  "name": "sharvani",
+  "version": "1.0.0",
+  "description": "node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node.js",
+    "react.js",
+    "angular.js"
+  ],
+  "author": "sharvani",
+  "license": "ISC"
+}
