@@ -1,135 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone Models</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .iphone-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            padding: 20px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 20px;
-        }
-        .iphone-image {
-            width: 200px;
-            height: auto;
-            border-radius: 8px;
-        }
-        h2 {
-            color: #333;
-        }
-        h3 {
-            color: #555;
-        }
-        .specifications, .storage-options {
-            margin-left: 20px;
-        }
-        .storage-options li {
-            list-style-type: square;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information</title>
 </head>
 <body>
-    <div class="container">
-        <h1>iPhone Models and Specifications</h1>
-        <div id="iphone-list"></div>
-    </div>
 
-    <script>
-        const iphoneData = [
-            {
-                "model": "iPhone 12",
-                "release_year": 2020,
-                "processor": "A14 Bionic chip",
-                "display": "6.1-inch OLED",
-                "camera": "12MP dual-camera system",
-                "battery_life": "17 hours of video playback",
-                "storage_options": ["64GB", "128GB", "256GB"],
-                "image": "https://rukminim3.flixcart.com/image/850/1000/kg8avm80/mobile/j/f/9/apple-iphone-12-dummyapplefsn-original-imafwg8dkyh2zgrh.jpeg?q=90&crop=false"
-            },
-            {
-                "model": "iPhone 13",
-                "release_year": 2021,
-                "processor": "A15 Bionic chip",
-                "display": "6.1-inch Super Retina XDR",
-                "camera": "12MP dual-camera system with Night Mode",
-                "battery_life": "19 hours of video playback",
-                "storage_options": ["128GB", "256GB", "512GB"],
-                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSciWmsmLFkZgHn7YbGHiKYYFMBG6UU8PFcYw&s"
-            },
-            {
-                "model": "iPhone 14",
-                "release_year": 2022,
-                "processor": "A16 Bionic chip",
-                "display": "6.1-inch Super Retina XDR OLED",
-                "camera": "48MP main camera + 12MP ultra-wide",
-                "battery_life": "20 hours of video playback",
-                "storage_options": ["128GB", "256GB", "512GB"],
-                "image": "https://www.clove.co.uk/cdn/shop/products/iphone-14-pro-gold-side_1200x.jpg?v=1665056845"
-            },
-            {
-                "model": "iPhone 15",
-                "release_year": 2023,
-                "processor": "A17 Pro chip",
-                "display": "6.1-inch Super Retina XDR OLED with Dynamic Island",
-                "camera": "48MP main camera + 12MP ultra-wide + 12MP telephoto",
-                "battery_life": "22 hours of video playback",
-                "storage_options": ["128GB", "256GB", "512GB", "1TB"],
-                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR10HkhHo9GuwEAHaLdrsJaxyVhJbVfoVHAAQ&s"
-            }
-        ];
+  <h1>Student Information</h1>
+  <p>Enter Student ID:</p>
+  <input type="text" id="studentId" placeholder="Enter Student ID">
+  <button onclick="getStudentInfo()">Submit</button>
 
-        function renderIphoneData() {
-            const iphoneListElement = document.getElementById("iphone-list");
-            iphoneData.forEach(iphone => {
-                const iphoneCard = document.createElement("div");
-                iphoneCard.classList.add("iphone-card");
+  <h2>Student Details:</h2>
+  <p id="studentName"></p>
+  <p id="studentPhone"></p>
+  <p id="studentHallTicket"></p>
 
-                iphoneCard.innerHTML = `
-                    <img src="${iphone.image}" alt="${iphone.model}" class="iphone-image">
-                    <div>
-                        <h2>${iphone.model} (${iphone.release_year})</h2>
-                        <h3>Processor:</h3>
-                        <p>${iphone.processor}</p>
-                        <h3>Display:</h3>
-                        <p>${iphone.display}</p>
-                        <h3>Camera:</h3>
-                        <p>${iphone.camera}</p>
-                        <h3>Battery Life:</h3>
-                        <p>${iphone.battery_life}</p>
-                        <h3>Storage Options:</h3>
-                        <ul class="storage-options">
-                            ${iphone.storage_options.map(storage => `<li>${storage}</li>`).join('')}
-                        </ul>
-                    </div>
-                `;
+  <script>
+    // Load XML data
+    function loadXML() {
+      const parser = new DOMParser();
+      const xmlString = `
+        <students>
+          <student id="1">
+            <name>John Doe</name>
+            <phone>123-456-7890</phone>
+            <hallticket>HT1234</hallticket>
+          </student>
+          <student id="2">
+            <name>Jane Smith</name>
+            <phone>987-654-3210</phone>
+            <hallticket>HT5678</hallticket>
+          </student>
+          <student id="3">
+            <name>Mark Johnson</name>
+            <phone>555-666-7777</phone>
+            <hallticket>HT9101</hallticket>
+          </student>
+        </students>
+      `;
+      return parser.parseFromString(xmlString, "application/xml");
+    }
 
-                iphoneListElement.appendChild(iphoneCard);
-            });
+    // Function to get student info by ID
+    function getStudentInfo() {
+      const studentId = document.getElementById("studentId").value;
+      const xmlDoc = loadXML();
+      const students = xmlDoc.getElementsByTagName("student");
+      let found = false;
+
+      // Search through the students and match the ID
+      for (let i = 0; i < students.length; i++) {
+        const student = students[i];
+        if (student.getAttribute("id") === studentId) {
+          document.getElementById("studentName").textContent = "Name: " + student.getElementsByTagName("name")[0].textContent;
+          document.getElementById("studentPhone").textContent = "Phone: " + student.getElementsByTagName("phone")[0].textContent;
+          document.getElementById("studentHallTicket").textContent = "Hall Ticket: " + student.getElementsByTagName("hallticket")[0].textContent;
+          found = true;
+          break;
         }
+      }
 
-        renderIphoneData();
-    </script>
+      // If student not found
+      if (!found) {
+        document.getElementById("studentName").textContent = "Student not found.";
+        document.getElementById("studentPhone").textContent = "";
+        document.getElementById("studentHallTicket").textContent = "";
+      }
+    }
+  </script>
+
 </body>
 </html>
-
-
-
-
