@@ -1,0 +1,42 @@
+[
+  {
+    "model": "iPhone 12",
+    "release_year": 2020,
+    "processor": "A14 Bionic chip",
+    "display": "6.1-inch OLED",
+    "camera": "12MP dual-camera system",
+    "battery_life": "17 hours of video playback",
+    "storage_options": ["64GB", "128GB", "256GB"],
+    "image": "images/iphone12.jpg"
+  },
+  {
+    "model": "iPhone 13",
+    "release_year": 2021,
+    "processor": "A15 Bionic chip",
+    "display": "6.1-inch Super Retina XDR",
+    "camera": "12MP dual-camera system with Night Mode",
+    "battery_life": "19 hours of video playback",
+    "storage_options": ["128GB", "256GB", "512GB"],
+    "image": "images/iphone13.jpg"
+  },
+  {
+    "model": "iPhone 14",
+    "release_year": 2022,
+    "processor": "A16 Bionic chip",
+    "display": "6.1-inch Super Retina XDR OLED",
+    "camera": "48MP main camera + 12MP ultra-wide",
+    "battery_life": "20 hours of video playback",
+    "storage_options": ["128GB", "256GB", "512GB"],
+    "image": "images/iphone14.jpg"
+  },
+  {
+    "model": "iPhone 15",
+    "release_year": 2023,
+    "processor": "A17 Pro chip",
+    "display": "6.1-inch Super Retina XDR OLED with Dynamic Island",
+    "camera": "48MP main camera + 12MP ultra-wide + 12MP telephoto",
+    "battery_life": "22 hours of video playback",
+    "storage_options": ["128GB", "256GB", "512GB", "1TB"],
+    "image": "images/iphone15.jpg"
+  }
+]
